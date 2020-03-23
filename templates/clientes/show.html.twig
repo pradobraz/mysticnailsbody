@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}{% block title %}Clientes{% endblock %}{% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="py-3">
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="ml-5 text-info">Ficha de Cliente</h5>
+            </div>
+        </div>
+    </div>
+    <div class="py-1 ml-5 col-md-10 border border-warning">
+        <div class="row">
+            <div class="col-md-10">
+                <br>
+                <div class="table-responsive-md">
+                    <table class="table table-hover table-sm">
+                        <tbody>
+                            <!--<tr>
+                                <th>Id</th>
+                                <td>{{ cliente.id }}</td>
+                            </tr>-->
+                            <tr>
+                                <th>Nome</th>
+                                <td>{{ cliente.nome }}</td>
+                            </tr>
+                            <tr>
+                                <th>DataNascimento</th>
+                                <td>{{ cliente.dataNascimento ? cliente.dataNascimento|date('Y-m-d') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Telefone</th>
+                                <td>{{ cliente.telefone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ cliente.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Contribuinte</th>
+                                <td>{{ cliente.contribuinte }}</td>
+                            </tr>
+                            <tr>
+                                <th>Activo</th>
+                                <td>{{ cliente.activo ? 'Yes' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Registo</th>
+                                <td>{{ cliente.registo ? cliente.registo|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>RegistoUpdate</th>
+                                <td>{{ cliente.registoUpdate ? cliente.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ml-3 col-md-10">
+                <div class="pt-2 text-left">
+                    <a href="{{ path('clientes_edit', {'id': cliente.id}) }}"><button class="btn btn-outline-info"><i class="fas fa-pencil-alt fa-1x"></i></button></a>
+                </div>
+                <div class="pb-2 text-right">
+                    {{ include('clientes/_delete_form.html.twig', {'button_label': 'delete'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="row">
+            <div class="ml-5 col-md-10 text-center">
+                <a href="{{ path('clientes_index') }}"> <button class="btn btn-outline-info" title="Lista de clientes">Lista Clientes</button></a>
+            </div>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+{% endblock %}

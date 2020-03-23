@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}{% block title %}Edit Marcacoes{% endblock %}{% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="py-3">
+        <div class="row">
+            <div class="col-md-10">
+                <h6 class="ml-5 text-primary">Editar dados marcação</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ml-5 col-md-10 border border-warning">
+            <div class="pt-2 text-left">
+                {{ include('marcacoes/_form.html.twig', {'button_label': 'GUARDAR'}) }}
+            </div>
+            <div class="pb-2 text-right">
+                {{ include('marcacoes/_delete_form.html.twig', {'button_label': 'delete'}) }}
+            </div>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="row">
+            <div class="ml-5 col-md-10 text-center">
+                <a href="{{ path('marcacoes_index') }}"> <button class="btn btn-outline-dark">Lista marcações</button></a>
+            </div>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+{% endblock %}

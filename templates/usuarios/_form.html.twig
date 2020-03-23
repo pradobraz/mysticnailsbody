@@ -1,0 +1,44 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-10">
+        <div class="form-row">
+            <div class="col">
+                {{ form_label(form.nome) }} {{ form_widget(form.nome) }}
+            </div>
+            <div class="col">
+                {{ form_label(form.apelido) }} {{ form_widget(form.apelido) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                {{ form_label(form.email) }} {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                {{ form_label(form.login) }} {{ form_widget(form.login) }}
+            </div>
+            <div class="col">
+                {{ form_label(form.password) }} {{ form_widget(form.password) }}
+            </div>
+        </div>
+        {{ form_widget(form.registo_update)}}
+        <div class="py-2">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-check">
+                        {{ form_label(form.activo) }} {{ form_widget(form.activo) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-2">
+            <div class="form-row">
+                <div class="col">
+                    <button class="btn btn-outline-info" title="GUARDAR">{{ button_label|default('GUARDAR') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

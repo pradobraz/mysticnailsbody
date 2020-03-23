@@ -1,0 +1,10 @@
+// assets/css/global.scss
+// customize some Bootstrap variables
+$primary: darken(#428bca, 20%);
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~@fortawesome/fontawesome-free/css/fontawesome';
+@import '~@fortawesome/fontawesome-free/css/regular';
+@import '~@fortawesome/fontawesome-free/css/solid';
+@import '~@fortawesome/fontawesome-free/css/brands';

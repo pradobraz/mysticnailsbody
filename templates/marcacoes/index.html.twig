@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}{% block title %}Marcacoes index{% endblock %}{% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="row">
+        <div class="col-md-12">
+            <h6 class="ml-3 text-info">Marcações</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive-sm">
+                <table class="table table-hover table-sm">
+                    <thead class="bg-dark text-info">
+                        <tr>
+                            <!--<th>Id</th>-->
+                            <th>Nome</th>
+                            <th>Tiposervico1</th>
+                            <!--<th>Tiposervico2</th>
+                            <th>Tiposervico3</th>
+                            <th>Tiposervico4</th>-->
+                            <th>Dia</th>
+                            <th>Hora</th>
+                            <!--<th>Notas</th>-->
+                            <th>Status</th>
+                            <!--<th>Valor</th>
+                            <th>Registo</th>
+                            <th>Registo_update</th>-->
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for marcaco in marcacoes %}
+                        <tr>
+                            <!--<td>{{ marcaco.id }}</td>-->
+                            <td>{{ marcaco.nomeCliente }}</td>
+                            <td>{{ marcaco.tiposervico1 }}</td>
+                            <!--<td>{{ marcaco.tiposervico2 }}</td>
+                            <td>{{ marcaco.tiposervico3 }}</td>
+                            <td>{{ marcaco.tiposervico4 }}</td>-->
+                            <td>{{ marcaco.diaM ? marcaco.diaM|date('Y-m-d') : '' }}</td>
+                            <td>{{ marcaco.horaM ? marcaco.horaM|date('H:i:s') : '' }}</td>
+                            <!--<td>{{ marcaco.notas }}</td>-->
+                            <td>{{ marcaco.status }}</td>
+                            <!--<td>{{ marcaco.valor }}</td>
+                            <td>{{ marcaco.registo ? marcaco.registo|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ marcaco.registoUpdate ? marcaco.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>-->
+                            <td>
+                                <a href="{{ path('marcacoes_show', {'id': marcaco.id}) }}"><i class="fas fa-eye fa-1x text-info" title="Detalhes da marcação"></i></a>
+                                <a href="{{ path('marcacoes_edit', {'id': marcaco.id}) }}"><i class="fas fa-edit fa-1x text-danger" title="Editar dados"></i></a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="14">Não existem Marcações</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <p>
+                <hr>
+            </p>
+            <a href="{{ path('marcacoes_new') }}"><button class="btn btn-outline-info" title="Criar nova marcação">CRIAR MARCAÇÃO</button></a>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+
+{% endblock %}

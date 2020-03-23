@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %} {% block title %}New Usuarios{% endblock %} {% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="py-3">
+        <div class="row">
+            <div class="ml-5 col-md-10">
+                <h5 class="text-info">Novo Usuário</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ml-5 col-md-10 border border-warning">
+                {{ include('usuarios/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ml-5 col-md-10 text-center">
+            <a href="{{ path('usuarios_index') }}"> <button class="btn btn-outline-info" title="Lista de usuários">Lista Usuários</button></a>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+
+{% endblock %}

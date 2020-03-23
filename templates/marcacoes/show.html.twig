@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}{% block title %}Marcacoes{% endblock %}{% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="py-3">
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="ml-5 text-info">Marcação</h5>
+            </div>
+        </div>
+    </div>
+    <div class="py-1 ml-5 col-md-10 border border-warning">
+        <div class="row">
+            <div class="col-md-10">
+                <br>
+                <div class="table-responsive-md">
+                    <table class="table">
+                        <tbody>
+                            <!--<tr>
+                                <th>Id</th>
+                                <td>{{ marcaco.id }}</td>
+                            </tr>-->
+                            <tr>
+                                <th>Nome</th>
+                                <td>{{ marcaco.nomeCliente }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tiposervico1</th>
+                                <td>{{ marcaco.tiposervico1 }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tiposervico2</th>
+                                <td>{{ marcaco.tiposervico2 }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tiposervico3</th>
+                                <td>{{ marcaco.tiposervico3 }}</td>
+                            </tr>
+                            <tr>
+                                <th>Tiposervico4</th>
+                                <td>{{ marcaco.tiposervico4 }}</td>
+                            </tr>
+                            <tr>
+                                <th>Dia</th>
+                                <td>{{ marcaco.diaM ? marcaco.diaM|date('Y-m-d') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Hora</th>
+                                <td>{{ marcaco.horaM ? marcaco.horaM|date('H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Notas</th>
+                                <td>{{ marcaco.notas }}</td>
+                            </tr>
+                            <tr>
+                                <th>Valor</th>
+                                <td>{{ marcaco.valor }}€</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ marcaco.status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Registo</th>
+                                <td>{{ marcaco.registo ? marcaco.registo|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Registo_update</th>
+                                <td>{{ marcaco.registoUpdate ? marcaco.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ml-3 col-md-10">
+                <div class="pt-2 text-left">
+                    <a href="{{ path('marcacoes_edit', {'id': marcaco.id}) }}"><button class="btn btn-outline-info"><i class="fas fa-pencil-alt fa-1x"></i></button></a>
+                </div>
+                <div class="pb-2 text-right">
+                    {{ include('marcacoes/_delete_form.html.twig', {'button_label': 'delete'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="row">
+            <div class="ml-5 col-md-10 text-center">
+                <a href="{{ path('marcacoes_index') }}"> <button class="btn btn-outline-info" title="Lista de marcações">Lista marcações</button></a>
+            </div>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+
+{% endblock %}

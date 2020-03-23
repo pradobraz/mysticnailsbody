@@ -1,0 +1,51 @@
+{% block header %}
+<div class="py-3">
+    <div class="row">
+        <div class="col-md-12">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="/"><i class="fas fa-home text-light" title="Página inicial"></i></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="p-2">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Área de clientes">
+                            CLIENTES
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('clientes_new') }}">Novo</a>
+                                <a class="dropdown-item" href="{{ path('clientes_index') }}">Lista</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Outros</a>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Área de marcações">
+                            MARCAÇÕES
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('marcacoes_new') }}">Novo</a>
+                                <a class="dropdown-item" href="{{ path('marcacoes_index') }}">Lista</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Outros</a>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Área de usuários">
+                            USUÁRIOS
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ path('user_new') }}">Novo</a>
+                                <a class="dropdown-item" href="{{ path('user_index') }}">Lista</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Outros</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %} {% block title %}Clientes index{% endblock %}{% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="ml-3 text-info">Clientes</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive-sm">
+                <table class="table table-hover table-sm">
+                    <thead class="bg-dark text-info">
+                        <tr>
+                            <!--<th>Id</th>-->
+                            <th>Nome</th>
+                            <!--<th>DataNascimento</th>-->
+                            <th>Telefone</th>
+                            <!--<th>Email</th>
+                            <th>Contribuinte</th>-->
+                            <th>Activo</th>
+                            <!--<th>Registo</th>
+                            <th>RegistoUpdate</th>-->
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                        <tr>
+                            <!--<td>{{ cliente.id }}</td>-->
+                            <td>{{ cliente.nome }}</td>
+                            <!--<td>{{ cliente.dataNascimento ? cliente.dataNascimento|date('Y-m-d') : '' }}</td>-->
+                            <td>{{ cliente.telefone }}</td>
+                            <!--<td>{{ cliente.email }}</td>
+                            <td>{{ cliente.contribuinte }}</td>-->
+                            <td>{{ cliente.activo ? 'Yes' : 'No' }}</td>
+                            <!--<td>{{ cliente.registo ? cliente.registo|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ cliente.registoUpdate ? cliente.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>-->
+                            <td>
+                                <a href="{{ path('clientes_show', {'id': cliente.id}) }}"><i class="fas fa-eye fa-1x text-info" title="Detalhes do cliente"></i></a>
+                                <a href="{{ path('clientes_edit', {'id': cliente.id}) }}"><i class="fas fa-edit fa-1x text-danger" title="Editar dados"></i></a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="10">Não existem clientes</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <p>
+                <hr>
+            </p>
+            <a href="{{ path('clientes_new') }}"><button class="btn btn-outline-info" title="Criar novo cliente">CRIAR CLIENTE</button></a>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+{% endblock %}

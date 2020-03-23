@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}{% block title %}New Marcacoes{% endblock %} {% block jquery%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{% endblock %} {% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="py-3">
+        <div class="row">
+            <div class="ml-5 col-md-10">
+                <h5 class="text-info">Nova Marcação</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ml-5 col-md-10 border border-warning">
+                <br>{{ include('marcacoes/_form.html.twig') }}
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ml-5 col-md-10 text-center">
+            <a href="{{ path('marcacoes_index') }}"><button class="btn btn-outline-info" title="Lista de marcações">Lista marcações</button></a>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+
+{% block javascripts %} {{ parent() }} {{ encore_entry_script_tags('populate') }} {% endblock %} {% endblock %}
