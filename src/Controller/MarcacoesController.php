@@ -15,7 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MarcacoesController extends AbstractController
 {
-    
     /**
      * @Route("/", name="marcacoes_index", methods={"GET"})
      */

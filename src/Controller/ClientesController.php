@@ -17,12 +17,23 @@ class ClientesController extends AbstractController
 {
     
     /**
-     * @Route("/", name="clientes_index", methods={"GET"})
+     * @Route("/", name="clientes_index", methods={"GET","POST"})
      */
-    public function index(ClientesRepository $clientesRepository): Response
+    public function index(ClientesRepository $clientesRepository,Request $request): Response
     {
+        $cliente = new Clientes();
+        $form = $this->createForm(ClientesType::class, $cliente);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($cliente);
+            $entityManager->flush();
+        }
         return $this->render('clientes/index.html.twig', [
             'clientes' => $clientesRepository->findAll(),
+            'cliente' => $cliente,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -84,6 +95,9 @@ class ClientesController extends AbstractController
      */
     public function delete(Request $request, Clientes $cliente): Response
     {
+        $form = $this->createForm(ClientesType::class, $cliente);
+        $form->handleRequest($request);
+
         if ($this->isCsrfTokenValid('delete'.$cliente->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($cliente);

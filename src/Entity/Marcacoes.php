@@ -17,54 +17,49 @@ class Marcacoes
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
-    private $nomeCliente;
+    private $idCliente;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $tiposervico1;
+    private $servico1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $tiposervico2;
+    private $servico2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $tiposervico3;
+    private $servico3;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $tiposervico4;
+    private $servico4;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $diaM;
+    private $marcacaoDia;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $horaM;
+    private $marcacaoHora;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
-    private $notas;
+    private $valor;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $status;
-
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
-     */
-    private $valor;
+    private $estado;
 
     /**
      * @ORM\Column(type="datetime")
@@ -76,15 +71,11 @@ class Marcacoes
      */
     private $registo_update;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Clientes", inversedBy="marcacoes")
-     */
-    private $cliente;
+    public function __construct(){
 
-    public function __construct()
-    {
         $this->registo = new \DateTime("now");
         $this->registo_update = new \DateTime("now");
+
     }
 
     public function getId(): ?int
@@ -92,110 +83,86 @@ class Marcacoes
         return $this->id;
     }
 
-    public function getNomeCliente(): ?string
+    public function getIdCliente(): ?int
     {
-        return $this->nomeCliente;
+        return $this->idCliente;
     }
 
-    public function setNomeCliente(string $nomeCliente): self
+    public function setIdCliente(int $idCliente): self
     {
-        $this->nomeCliente = $nomeCliente;
+        $this->idCliente = $idCliente;
 
         return $this;
     }
 
-    public function getTiposervico1(): ?string
+    public function getServico1(): ?string
     {
-        return $this->tiposervico1;
+        return $this->servico1;
     }
 
-    public function setTiposervico1(string $tiposervico1): self
+    public function setServico1(string $servico1): self
     {
-        $this->tiposervico1 = $tiposervico1;
+        $this->servico1 = $servico1;
 
         return $this;
     }
 
-    public function getTiposervico2(): ?string
+    public function getServico2(): ?string
     {
-        return $this->tiposervico2;
+        return $this->servico2;
     }
 
-    public function setTiposervico2(?string $tiposervico2): self
+    public function setServico2(?string $servico2): self
     {
-        $this->tiposervico2 = $tiposervico2;
+        $this->servico2 = $servico2;
 
         return $this;
     }
 
-    public function getTiposervico3(): ?string
+    public function getServico3(): ?string
     {
-        return $this->tiposervico3;
+        return $this->servico3;
     }
 
-    public function setTiposervico3(?string $tiposervico3): self
+    public function setServico3(?string $servico3): self
     {
-        $this->tiposervico3 = $tiposervico3;
+        $this->servico3 = $servico3;
 
         return $this;
     }
 
-    public function getTiposervico4(): ?string
+    public function getServico4(): ?string
     {
-        return $this->tiposervico4;
+        return $this->servico4;
     }
 
-    public function setTiposervico4(?string $tiposervico4): self
+    public function setServico4(?string $servico4): self
     {
-        $this->tiposervico4 = $tiposervico4;
+        $this->servico4 = $servico4;
 
         return $this;
     }
 
-    public function getDiaM(): ?\DateTimeInterface
+    public function getMarcacaoDia(): ?\DateTimeInterface
     {
-        return $this->diaM;
+        return $this->marcacaoDia;
     }
 
-    public function setDiaM(\DateTimeInterface $diaM): self
+    public function setMarcacaoDia(\DateTimeInterface $marcacaoDia): self
     {
-        $this->diaM = $diaM;
+        $this->marcacaoDia = $marcacaoDia;
 
         return $this;
     }
 
-    public function getHoraM(): ?\DateTimeInterface
+    public function getMarcacaoHora(): ?\DateTimeInterface
     {
-        return $this->horaM;
+        return $this->marcacaoHora;
     }
 
-    public function setHoraM(\DateTimeInterface $horaM): self
+    public function setMarcacaoHora(\DateTimeInterface $marcacaoHora): self
     {
-        $this->horaM = $horaM;
-
-        return $this;
-    }
-
-    public function getNotas(): ?string
-    {
-        return $this->notas;
-    }
-
-    public function setNotas(?string $notas): self
-    {
-        $this->notas = $notas;
-
-        return $this;
-    }
-
-    public function getStatus(): ?string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
+        $this->marcacaoHora = $marcacaoHora;
 
         return $this;
     }
@@ -208,6 +175,18 @@ class Marcacoes
     public function setValor(?string $valor): self
     {
         $this->valor = $valor;
+
+        return $this;
+    }
+
+    public function getEstado(): ?string
+    {
+        return $this->estado;
+    }
+
+    public function setEstado(string $estado): self
+    {
+        $this->estado = $estado;
 
         return $this;
     }
@@ -232,18 +211,6 @@ class Marcacoes
     public function setRegistoUpdate(?\DateTimeInterface $registo_update): self
     {
         $this->registo_update = $registo_update;
-
-        return $this;
-    }
-
-    public function getCliente(): ?Clientes
-    {
-        return $this->cliente;
-    }
-
-    public function setCliente(?Clientes $cliente): self
-    {
-        $this->cliente = $cliente;
 
         return $this;
     }

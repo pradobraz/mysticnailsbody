@@ -2,26 +2,3 @@
 body {
     background-color: lightgray;
 }
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #dd0505;
-}
-
-.dropdown:hover {
-    background-color: #dd0505;
-}
-
-.dropdown-content a:hover {
-    background-color: blue;
-}
-
-.dropdown-menu {
-    position: relative;
-}

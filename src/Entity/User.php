@@ -33,16 +33,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $login;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $password;
@@ -63,43 +53,15 @@ class User implements UserInterface
     private $registo_update;
 
     /**
-     * @see UserInterface
+     * @ORM\Column(type="string", length=255)
      */
-    public function getSalt()
-    {
-        // not needed for apps that do not check user passwords
-    }
-    /**
-     * @see UserInterface
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->email;
-    }
+    private $username;
 
     /**
-     * @ORM\Column("type=json")
+     * @ORM\Column(type="string", length=255)
      */
+    private $plainPassword;
 
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-
-        $roles[] = 'IS_AUTHENTICATED_ANONYMOUSLY';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-        return $this;
-    }
-
-    public function eraseCredentials()
-    {
-
-    }
 
     public function __construct()
     {
@@ -148,28 +110,28 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getLogin(): ?string
+    public function getPlainPassword(): ?string
     {
-        return $this->login;
+        return $this->plainPassword;
     }
 
-    public function setLogin(string $login): self
+    public function setPlainPassword(string $password)//: self
     {
-        $this->login = $login;
+        $this->plainPassword = $password;
 
-        return $this;
+        //return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPassword()//: ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword($password)//: self
     {
         $this->password = $password;
 
-        return $this;
+       // return $this;
     }
 
     public function getActivo(): ?bool
@@ -207,5 +169,39 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+  
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getSalt()
+    {
+        // not needed for apps that do not check user passwords
+    }
+
+    public function getRoles(): array
+    {
+        //$roles = $this->roles;
+
+        $roles[] = 'ROLE_USER'; //''IS_AUTHENTICATED_ANONYMOUSLY;
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    public function eraseCredentials() {}
 
 }

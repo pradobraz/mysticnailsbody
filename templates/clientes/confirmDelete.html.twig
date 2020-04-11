@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}{% block title %}Clientes{% endblock %}{% block body %}
+<div class="container">
+    {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
+    <div class="py-3">
+        <div class="row">
+            <div class="col-md-10">
+                <h5 class="ml-5 text-info">Confirmação da eliminação</h5>
+            </div>
+        </div>
+    </div>
+    <div class="py-1 ml-5 col-md-10 border border-warning">
+        <div class="row">
+            <div class="col-md-10">
+                <p>O processo de eliminação do cliente é irreversível.</p>
+                {{ include('clientes/_delete_form.html.twig', {'button_label': 'delete'}) }}
+            </div>
+        </div>
+    </div>
+    <div class="py-3">
+        <div class="row">
+            <div class="ml-5 col-md-10 text-center">
+                <a href="{{ path('clientes_index') }}"> <button class="btn btn-outline-info" title="Lista de clientes">Lista Clientes</button></a>
+            </div>
+        </div>
+    </div>
+    {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}
+</div>
+{% endblock %}

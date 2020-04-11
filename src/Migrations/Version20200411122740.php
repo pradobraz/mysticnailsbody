@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200315143537 extends AbstractMigration
+final class Version20200411122740 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20200315143537 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE usuarios (id INT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, apelido VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, login VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, activo TINYINT(1) NOT NULL, registo DATETIME DEFAULT NULL, registo_update DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE marcacoes (id INT AUTO_INCREMENT NOT NULL, id_cliente INT NOT NULL, servico1 VARCHAR(255) NOT NULL, servico2 VARCHAR(255) DEFAULT NULL, servico3 VARCHAR(255) DEFAULT NULL, servico4 VARCHAR(255) DEFAULT NULL, marcacao_dia DATE NOT NULL, marcacao_hora TIME NOT NULL, valor NUMERIC(10, 2) DEFAULT NULL, estado VARCHAR(255) NOT NULL, registo DATETIME NOT NULL, registo_update DATETIME DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20200315143537 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE usuarios');
+        $this->addSql('DROP TABLE marcacoes');
     }
 }

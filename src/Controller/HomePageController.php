@@ -13,13 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomePageController extends AbstractController
 {
     /**
-     * @Route("/", name="home_page") //home/page
+     * @Route("/home", name="home_page") //home/page
      */
-    public function index(MarcacoesRepository $marcacoesRepository, Request $request, PaginatorInterface $paginator): Response
+    public function index(Request $request)//MarcacoesRepository $marcacoesRepository,
     {
+
         return $this->render('home_page/index.html.twig', [
             'controller_name' => 'HomePageController',
-            'marcacoes' => $marcacoesRepository->findAll(),
+            //'marcacoes' => $marcacoesRepository->findAll(),
+
         ]);
     }
 

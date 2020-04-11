@@ -18,14 +18,14 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
-//use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
+use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator //implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
 
-    //private const LOGIN_ROUTE = 'app_login';
+    private const LOGIN_ROUTE = 'app_login';
 
     private $entityManager;
     private $urlGenerator;
@@ -42,10 +42,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator //implements
 
     public function supports(Request $request)
     {
-        //return self::LOGIN_ROUTE === $request->attributes->get('_route')
-            //&& $request->isMethod('POST');
-        return 'app_login' === $request->attributes->get('_route')
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
+
+        /*return 'app_login' === $request->attributes->get('_route')
+            && $request->isMethod('POST');*/
     }
 
     public function getCredentials(Request $request)
@@ -83,7 +84,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator //implements
     {
         // Check the user's password or other credentials and return true or false
         // If there are no credentials to check, you can just return true
-        $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        /*$token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
              throw new InvalidCsrfTokenException();
         }
@@ -94,15 +96,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator //implements
             throw new CustomUserMessageAuthenticationException('Wrong password.');
         }
 
-        return true;
+        return true;*/
     }
-
-
-    /*public function checkCredentials($credentials, UserInterface $user)
-    {
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
-    }*/
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
@@ -118,7 +113,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator //implements
 
     protected function getLoginUrl()
     {
-        //return $this->urlGenerator->generate(self::LOGIN_ROUTE);
-        return $this->urlGenerator->generate('app_login');
+        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        //return $this->urlGenerator->generate('app_login');
     }
 }

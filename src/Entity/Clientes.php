@@ -59,11 +59,6 @@ class Clientes
      */
     private $registoUpdate;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Marcacoes", mappedBy="cliente")
-     */
-    private $marcacoes;
-
     public function __construct()
     {
         $this->registo = new \DateTime("now");
@@ -168,37 +163,6 @@ class Clientes
     public function setRegistoUpdate(?\DateTimeInterface $registoUpdate): self
     {
         $this->registoUpdate = $registoUpdate;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Marcacoes[]
-     */
-    public function getMarcacoes(): Collection
-    {
-        return $this->marcacoes;
-    }
-
-    public function addMarcaco(Marcacoes $marcaco): self
-    {
-        if (!$this->marcacoes->contains($marcaco)) {
-            $this->marcacoes[] = $marcaco;
-            $marcaco->setCliente($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMarcaco(Marcacoes $marcaco): self
-    {
-        if ($this->marcacoes->contains($marcaco)) {
-            $this->marcacoes->removeElement($marcaco);
-            // set the owning side to null (unless already changed)
-            if ($marcaco->getCliente() === $this) {
-                $marcaco->setCliente(null);
-            }
-        }
 
         return $this;
     }

@@ -3,7 +3,29 @@
     {% block navbar %} {% include ('navbar.html.twig') %} {% endblock navbar %}
     <div class="row">
         <div class="col-md-12">
-            <h5 class="ml-3 text-info">Clientes</h5>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0 text-left">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <h5></h5>
+                            {{ include('clientes/_form.html.twig') }} {# <a href="{{ path('clientes_new') }}"><button class="btn btn-outline-info" title="Criar novo cliente">CRIAR CLIENTE</button></a>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <br />
         </div>
     </div>
     <div class="row">
@@ -38,7 +60,8 @@
                             <td>{{ cliente.registoUpdate ? cliente.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>-->
                             <td>
                                 <a href="{{ path('clientes_show', {'id': cliente.id}) }}"><i class="fas fa-eye fa-1x text-info" title="Detalhes do cliente"></i></a>
-                                <a href="{{ path('clientes_edit', {'id': cliente.id}) }}"><i class="fas fa-edit fa-1x text-danger" title="Editar dados"></i></a>
+                                <a href="{{ path('clientes_edit', {'id': cliente.id}) }}"><i class="fas fa-edit fa-1x text-warning" title="Editar dados"></i></a>
+                                {#<a href="{{ path('clientes_delete', {'id': cliente.id}) }}"><i class="fas fa-trash-alt fa-1x text-danger" title="Eliminar cliente"></i></a>#}
                             </td>
                         </tr>
                         {% else %}
@@ -49,14 +72,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <p>
-                <hr>
-            </p>
-            <a href="{{ path('clientes_new') }}"><button class="btn btn-outline-info" title="Criar novo cliente">CRIAR CLIENTE</button></a>
         </div>
     </div>
     {% block footer %} {% include ('footer.html.twig') %} {% endblock footer %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marcacoes{% endblock %}
+
+{% block body %}
+    <h1>Marcacoes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ marcaco.id }}</td>
+            </tr>
+            <tr>
+                <th>IdCliente</th>
+                <td>{{ marcaco.idCliente }}</td>
+            </tr>
+            <tr>
+                <th>Servico1</th>
+                <td>{{ marcaco.servico1 }}</td>
+            </tr>
+            <tr>
+                <th>Servico2</th>
+                <td>{{ marcaco.servico2 }}</td>
+            </tr>
+            <tr>
+                <th>Servico3</th>
+                <td>{{ marcaco.servico3 }}</td>
+            </tr>
+            <tr>
+                <th>Servico4</th>
+                <td>{{ marcaco.servico4 }}</td>
+            </tr>
+            <tr>
+                <th>MarcacaoDia</th>
+                <td>{{ marcaco.marcacaoDia ? marcaco.marcacaoDia|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>MarcacaoHora</th>
+                <td>{{ marcaco.marcacaoHora ? marcaco.marcacaoHora|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ marcaco.valor }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ marcaco.estado }}</td>
+            </tr>
+            <tr>
+                <th>Registo</th>
+                <td>{{ marcaco.registo ? marcaco.registo|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Registo_update</th>
+                <td>{{ marcaco.registoUpdate ? marcaco.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('marcacoes_index') }}">back to list</a>
+
+    <a href="{{ path('marcacoes_edit', {'id': marcaco.id}) }}">edit</a>
+
+    {{ include('marcacoes/_delete_form.html.twig') }}
+{% endblock %}

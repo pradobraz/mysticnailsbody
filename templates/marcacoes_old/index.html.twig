@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marcacoes index{% endblock %}
+
+{% block body %}
+    <h1>Marcacoes index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdCliente</th>
+                <th>Servico1</th>
+                <th>Servico2</th>
+                <th>Servico3</th>
+                <th>Servico4</th>
+                <th>MarcacaoDia</th>
+                <th>MarcacaoHora</th>
+                <th>Valor</th>
+                <th>Estado</th>
+                <th>Registo</th>
+                <th>Registo_update</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for marcaco in marcacoes %}
+            <tr>
+                <td>{{ marcaco.id }}</td>
+                <td>{{ marcaco.idCliente }}</td>
+                <td>{{ marcaco.servico1 }}</td>
+                <td>{{ marcaco.servico2 }}</td>
+                <td>{{ marcaco.servico3 }}</td>
+                <td>{{ marcaco.servico4 }}</td>
+                <td>{{ marcaco.marcacaoDia ? marcaco.marcacaoDia|date('Y-m-d') : '' }}</td>
+                <td>{{ marcaco.marcacaoHora ? marcaco.marcacaoHora|date('H:i:s') : '' }}</td>
+                <td>{{ marcaco.valor }}</td>
+                <td>{{ marcaco.estado }}</td>
+                <td>{{ marcaco.registo ? marcaco.registo|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ marcaco.registoUpdate ? marcaco.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('marcacoes_show', {'id': marcaco.id}) }}">show</a>
+                    <a href="{{ path('marcacoes_edit', {'id': marcaco.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('marcacoes_new') }}">Create new</a>
+{% endblock %}

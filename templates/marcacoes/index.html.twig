@@ -12,16 +12,16 @@
                 <table class="table table-hover table-sm">
                     <thead class="bg-dark text-info">
                         <tr>
-                            <!--<th>Id</th>-->
-                            <th>Nome</th>
-                            <th>Tiposervico1</th>
+                            <!--<th>Id</th>
+                            <th>Nome</th>-->
+                            <th>Servico</th>
                             <!--<th>Tiposervico2</th>
                             <th>Tiposervico3</th>
                             <th>Tiposervico4</th>-->
                             <th>Dia</th>
                             <th>Hora</th>
                             <!--<th>Notas</th>-->
-                            <th>Status</th>
+                            <th>Estado</th>
                             <!--<th>Valor</th>
                             <th>Registo</th>
                             <th>Registo_update</th>-->
@@ -32,22 +32,23 @@
                         {% for marcaco in marcacoes %}
                         <tr>
                             <!--<td>{{ marcaco.id }}</td>-->
-                            <td>{{ marcaco.nomeCliente }}</td>
-                            <td>{{ marcaco.tiposervico1 }}</td>
-                            <!--<td>{{ marcaco.tiposervico2 }}</td>
-                            <td>{{ marcaco.tiposervico3 }}</td>
-                            <td>{{ marcaco.tiposervico4 }}</td>-->
-                            <td>{{ marcaco.diaM ? marcaco.diaM|date('Y-m-d') : '' }}</td>
-                            <td>{{ marcaco.horaM ? marcaco.horaM|date('H:i:s') : '' }}</td>
-                            <!--<td>{{ marcaco.notas }}</td>-->
-                            <td>{{ marcaco.status }}</td>
-                            <!--<td>{{ marcaco.valor }}</td>
-                            <td>{{ marcaco.registo ? marcaco.registo|date('Y-m-d H:i:s') : '' }}</td>
-                            <td>{{ marcaco.registoUpdate ? marcaco.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>-->
+                            <td>{{ marcaco.servico1 }}</td>
+                            <!--<td>{{ marcaco.servico2 }}</td>
+                            <td>{{ marcaco.servico3 }}</td>
+                            <td>{{ marcaco.servico4 }}</td>-->
+                            <td>{{ marcaco.marcacaoDia ? marcaco.marcacaoDia|date('Y-m-d') : '' }}</td>
+                            <td>{{ marcaco.marcacaoHora ? marcaco.marcacaoHora|date('H:i:s') : '' }}</td>
+                            {#<td>{{ marcaco.notas }}</td>#}
+                            {#<td>{{ marcaco.valor }}</td>#}
+                            <td>{{ marcaco.estado }}</td>
+                            {#<td>{{ marcaco.registo ? marcaco.registo|date('Y-m-d H:i:s') : '' }}</td>#}
+                            {#<td>{{ marcaco.registoUpdate ? marcaco.registoUpdate|date('Y-m-d H:i:s') : '' }}</td>#}
                             <td>
                                 <a href="{{ path('marcacoes_show', {'id': marcaco.id}) }}"><i class="fas fa-eye fa-1x text-info" title="Detalhes da marcação"></i></a>
-                                <a href="{{ path('marcacoes_edit', {'id': marcaco.id}) }}"><i class="fas fa-edit fa-1x text-danger" title="Editar dados"></i></a>
-                            </td>
+                                <a href="{{ path('marcacoes_edit', {'id': marcaco.id}) }}"><i class="fas fa-edit fa-1x text-warning" title="Editar marcação"></i></a>
+                                {#{{ include('marcacoes/_delete_form.html.twig') }}#}
+                                <a href="{{ path('marcacoes_delete', {'id': marcaco.id}) }}"><i class="fas fa-trash-alt fa-1x text-danger" title="Eliminar marcação"></i></a>
+
                         </tr>
                         {% else %}
                         <tr>

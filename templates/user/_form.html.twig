@@ -1,4 +1,12 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.nome) }}
+    {{ form_row(form.apelido) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+    {{ form_row(form.activo) }}
+    {{ form_row(form.registo) }}
+    {{ form_row(form.registo_update) }}
     <button class="btn btn-outline-info" title="GUARDAR">{{ button_label|default('GUARDAR') }}</button>
 {{ form_end(form) }}
